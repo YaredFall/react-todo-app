@@ -1,0 +1,120 @@
+@import-normalize;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+$primary-color: white;
+$bg-color: rgb(50, 46, 59);
+
+.app {
+  --primary-color: #{$primary-color};
+  --bg-color: #{$bg-color};
+
+  min-height: 100%;
+  font-size: 1.5rem;
+  display: flex;
+  align-content: center;
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+}
+
+section {
+  min-height: max-content;
+  width: 100%;
+  height: 100%;
+  padding: 5rem 1rem 0 5rem;
+}
+
+h1 {
+  margin-bottom: 1rem;
+}
+
+.todo-list-title:after {
+  content: " - " attr(data-todos-left) " left";
+  color: invert($primary-color, 20%);
+  font-size: 0.75em;
+}
+
+ul {
+  margin: 1rem 0;
+  list-style: none;
+
+  & > li {
+    margin-left: 1rem;
+    animation: fadeIn 1s ease-in-out forwards;
+
+    & + li {
+      margin-top: 0.5rem;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0%;
+      }
+      100% {
+        opacity: 100%;
+      }
+    }
+  }
+}
+
+ul input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+ul input[type="checkbox"]:checked + span{
+  text-decoration: line-through;
+}
+
+input[type="text"] {
+  all: unset;
+  padding: 0.125em;
+  font-size: inherit;
+  background-color: transparent;
+  border-bottom: 0.125rem solid;
+}
+
+.add-todo-btn, .clear-todo-btn {
+  all: unset;
+  font-size: 0.75em;
+  vertical-align: middle;
+  padding: 0.125em 1em;
+  margin-left: 0.25em;
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 0.125rem solid;
+  border-color: var(--primary-color);
+  border-radius: 1em;
+
+  &:hover, &:focus {
+    --primary-color: #{invert($primary-color, 20%)};
+  }
+}
+
+.clear-todo-btn {
+  margin-top: 5rem;
+  margin-left: 0;
+  font-size: 2.2rem;
+}
+
