@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import TodoList from "./TodoList";
+import Button from "./Button";
+import Header1 from "./Header1";
 
 const LOCAL_STORAGE_KEY = 'todoApp.todos'
 
@@ -50,15 +52,13 @@ function App() {
   return (
     <div className="app">
       <section className="todo-add">
-        <h1 className="add-todo-title">Add Todo</h1>
+        <Header1 className="add-todo-title" label="Add Todo" />
         <input ref={todoNameInputRef} onKeyUp={handleTodoNameKeyInput} type="text" placeholder="todo..."/>
-        <button ref={addTodoBtn} className="add-todo-btn" onClick={handleAddTodo}>+</button>
-        <div>
-          <button className="clear-todo-btn" onClick={handleClearCompleted}>Clear Completed</button>
-        </div>
+        <Button ref={addTodoBtn} className="add-todo-btn" onClick={handleAddTodo} label="+"/>
+        <Button className="clear-todo-btn" onClick={handleClearCompleted} label="Clear Completed"/>
       </section>
       <section className="todo-list">
-        <h1 className="todo-list-title" data-todos-left={todos.filter(todo => !todo.completed).length}>Todo List</h1>
+        <Header1 className="todo-list-title" data-todos-left={todos.filter(todo => !todo.completed).length} label="Todo List" />
         <TodoList todos={todos} toggleTodo={toggleTodo} />
       </section>
     </div>
